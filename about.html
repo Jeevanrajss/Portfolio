@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About — Jeevan Raj</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@200;300;400;500;600;700;800;900&family=Bitcount+Grid+Double:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{--font-display:'Unbounded',sans-serif;--font-body:'Bitcount Grid Double',monospace;--bg:#F5F3EE;--bg-2:#EDEBE4;--bg-3:#E4E1D8;--ink:#1A1916;--ink-2:#3D3B36;--ink-3:#6B6860;--ink-4:#9B9890;--line:rgba(26,25,22,0.12);--accent:#C4522A;--accent-2:#A03E1E;--accent-tint:rgba(196,82,42,0.08);--card-bg:#ECEAE3;--card-border:rgba(26,25,22,0.08);--shadow:0 2px 20px rgba(26,25,22,0.06);--shadow-hover:0 8px 40px rgba(26,25,22,0.12);--tag-bg:rgba(26,25,22,0.06);--tag-color:#3D3B36}
+[data-theme="dark"]{--bg:#111110;--bg-2:#191917;--bg-3:#222220;--ink:#F0EDE6;--ink-2:#C8C5BC;--ink-3:#8A877E;--ink-4:#5A5750;--line:rgba(240,237,230,0.1);--accent:#E8724A;--accent-2:#C4522A;--accent-tint:rgba(232,114,74,0.1);--card-bg:#1C1C1A;--card-border:rgba(240,237,230,0.06);--shadow:0 2px 20px rgba(0,0,0,0.3);--shadow-hover:0 8px 40px rgba(0,0,0,0.5);--tag-bg:rgba(240,237,230,0.06);--tag-color:#C8C5BC}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{font-size:16px;scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);font-family:var(--font-body);line-height:1.6;transition:background .4s ease,color .4s ease;overflow-x:hidden}
+::selection{background:var(--accent);color:#fff}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+::-webkit-scrollbar{width:3px}::-webkit-scrollbar-track{background:var(--bg)}::-webkit-scrollbar-thumb{background:var(--accent);border-radius:99px}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:20px 48px;display:flex;align-items:center;justify-content:space-between;backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);background:rgba(17,17,16,.75);border-bottom:1px solid var(--line);transition:transform .35s ease,background .4s ease}
+[data-theme="light"] nav{background:rgba(245,243,238,.85)}
+.nav-logo{font-family:var(--font-display);font-size:.875rem;font-weight:600;letter-spacing:.08em;color:var(--ink);text-transform:uppercase}
+.nav-logo span{color:var(--accent)}
+.nav-links{display:flex;align-items:center;gap:32px;list-style:none}
+.nav-links a{font-family:var(--font-display);font-size:.58rem;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-3);transition:color .2s ease;position:relative}
+.nav-links a::after{content:'';position:absolute;bottom:-2px;left:0;width:0;height:1px;background:var(--accent);transition:width .3s ease}
+.nav-links a:hover,.nav-links a.active{color:var(--ink)}
+.nav-links a:hover::after,.nav-links a.active::after{width:100%}
+.theme-toggle{width:36px;height:36px;border-radius:50%;border:1px solid var(--line);background:var(--card-bg);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:.875rem;transition:all .2s ease;color:var(--ink-2)}
+.theme-toggle:hover{border-color:var(--accent);color:var(--accent);transform:rotate(20deg)}
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .7s ease,transform .7s ease}
+.reveal.revealed{opacity:1;transform:translateY(0)}
+.reveal-delay-1{transition-delay:.1s}.reveal-delay-2{transition-delay:.2s}.reveal-delay-3{transition-delay:.3s}.reveal-delay-4{transition-delay:.4s}
+.section-label{font-family:var(--font-display);font-size:.5rem;font-weight:600;letter-spacing:.25em;text-transform:uppercase;color:var(--accent);display:flex;align-items:center;gap:12px;margin-bottom:20px}
+.section-label::before{content:'';width:20px;height:1px;background:var(--accent)}
+.section-title{font-family:var(--font-display);font-size:clamp(2rem,4vw,3.5rem);font-weight:700;line-height:1.05;letter-spacing:-.02em;color:var(--ink);margin-bottom:16px}
+.tag{font-family:var(--font-display);font-size:.5rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;padding:7px 13px;background:var(--tag-bg);color:var(--tag-color);border:1px solid var(--line);transition:all .2s ease}
+.tag:hover{background:var(--accent);color:#fff;border-color:var(--accent)}
+
+/* PAGE HERO */
+.page-hero{padding:160px 48px 80px;border-bottom:1px solid var(--line);background:var(--bg-2);position:relative;overflow:hidden}
+.page-hero-bg{position:absolute;right:-40px;top:50%;transform:translateY(-50%);font-family:var(--font-display);font-size:18vw;font-weight:900;color:var(--line);letter-spacing:-.05em;pointer-events:none;line-height:1}
+.page-hero-back{font-family:var(--font-display);font-size:.55rem;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-4);display:inline-flex;align-items:center;gap:8px;margin-bottom:40px;transition:color .2s ease;cursor:pointer}
+.page-hero-back:hover{color:var(--accent)}
+.hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:end}
+.hero-title{font-family:var(--font-display);font-size:clamp(3.5rem,8vw,7.5rem);font-weight:800;line-height:.9;letter-spacing:-.03em;color:var(--ink)}
+.hero-title .accent{color:var(--accent)}
+.hero-right{padding-bottom:8px}
+.hero-intro{font-family:var(--font-display);font-size:1rem;font-weight:300;color:var(--ink-3);line-height:1.75;margin-bottom:32px}
+.hero-intro strong{color:var(--ink);font-weight:600}
+.hero-tags{display:flex;flex-wrap:wrap;gap:8px}
+
+/* STORY */
+.story-section{padding:100px 48px;display:grid;grid-template-columns:280px 1fr;gap:80px;border-bottom:1px solid var(--line)}
+.story-nav{position:sticky;top:120px;height:fit-content;display:flex;flex-direction:column;gap:2px}
+.story-nav-item{font-family:var(--font-display);font-size:.55rem;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-4);padding:12px 16px;border-left:2px solid var(--line);transition:all .25s ease;cursor:pointer}
+.story-nav-item:hover,.story-nav-item.active{color:var(--accent);border-left-color:var(--accent);background:var(--accent-tint)}
+.story-content{}
+.story-chapter{margin-bottom:72px;scroll-margin-top:140px}
+.story-chapter:last-child{margin-bottom:0}
+.chapter-year{font-family:var(--font-display);font-size:.5rem;font-weight:700;letter-spacing:.25em;text-transform:uppercase;color:var(--accent);margin-bottom:12px}
+.chapter-title{font-family:var(--font-display);font-size:1.75rem;font-weight:700;letter-spacing:-.02em;color:var(--ink);margin-bottom:20px;line-height:1.15}
+.chapter-text{font-family:var(--font-display);font-size:.875rem;font-weight:300;color:var(--ink-2);line-height:1.85;margin-bottom:16px}
+.chapter-text strong{color:var(--ink);font-weight:600}
+.chapter-highlight{background:var(--accent-tint);border-left:2px solid var(--accent);padding:20px 24px;margin:24px 0;font-family:var(--font-display);font-size:.875rem;font-weight:400;color:var(--ink-2);line-height:1.7;font-style:italic}
+
+/* IDENTITY CARDS */
+.identity-section{padding:80px 48px;background:var(--bg-2);border-bottom:1px solid var(--line)}
+.identity-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;margin-top:48px}
+.identity-card{background:var(--card-bg);border:1px solid var(--card-border);padding:32px;transition:all .3s ease;position:relative;overflow:hidden}
+.identity-card::before{content:'';position:absolute;top:0;left:0;width:3px;height:0;background:var(--accent);transition:height .4s ease}
+.identity-card:hover::before{height:100%}
+.identity-card:hover{background:var(--bg-3)}
+.identity-icon{font-size:1.5rem;margin-bottom:16px}
+.identity-title{font-family:var(--font-display);font-size:.75rem;font-weight:700;letter-spacing:-.01em;color:var(--ink);margin-bottom:10px}
+.identity-text{font-family:var(--font-display);font-size:.7rem;font-weight:300;color:var(--ink-3);line-height:1.7}
+
+/* CURRENTLY */
+.currently-section{padding:80px 48px;border-bottom:1px solid var(--line)}
+.currently-grid{display:grid;grid-template-columns:1fr 1fr;gap:2px;margin-top:48px}
+.currently-item{background:var(--card-bg);border:1px solid var(--card-border);padding:28px 32px;display:flex;gap:20px;align-items:flex-start;transition:all .25s ease}
+.currently-item:hover{background:var(--bg-3);border-color:var(--line)}
+.currently-bullet{width:8px;height:8px;background:var(--accent);border-radius:50%;margin-top:4px;flex-shrink:0}
+.currently-text{font-family:var(--font-display);font-size:.8rem;font-weight:400;color:var(--ink-2);line-height:1.6}
+.currently-text strong{color:var(--ink);font-weight:600;display:block;margin-bottom:4px}
+
+/* FOOTER */
+footer{background:var(--bg-2);padding:48px;border-top:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px}
+.footer-left{font-family:var(--font-display);font-size:.5rem;font-weight:500;letter-spacing:.15em;text-transform:uppercase;color:var(--ink-4)}
+.footer-oppy{font-family:var(--font-display);font-size:.7rem;font-weight:300;font-style:italic;color:var(--ink-4);text-align:center}
+.footer-right{display:flex;gap:24px}
+.footer-right a{font-family:var(--font-display);font-size:.5rem;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:var(--ink-4);transition:color .2s ease}
+.footer-right a:hover{color:var(--accent)}
+
+@media(max-width:1024px){nav{padding:16px 24px}.page-hero{padding:120px 24px 60px}.hero-grid{grid-template-columns:1fr;gap:40px}.story-section{grid-template-columns:1fr;padding:60px 24px}.story-nav{display:none}.identity-grid{grid-template-columns:1fr 1fr}.currently-grid{grid-template-columns:1fr}.identity-section,.currently-section,.footer-oppy{padding-left:24px;padding-right:24px}footer{flex-direction:column;text-align:center;padding:32px 24px}}
+@media(max-width:640px){.nav-links{display:none}.identity-grid{grid-template-columns:1fr}.hero-title{font-size:clamp(2.5rem,12vw,5rem)}}
+</style>
+</head>
+<body>
+<nav id="navbar">
+  <a href="index.html" class="nav-logo">J<span>.</span>Raj</a>
+  <ul class="nav-links">
+    <li><a href="index.html#work">Work</a></li>
+    <li><a href="about.html" class="active">About</a></li>
+    <li><a href="index.html#experience">Experience</a></li>
+    <li><a href="leadership.html">Leadership</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <button class="theme-toggle" id="themeToggle">☾</button>
+</nav>
+
+<!-- HERO -->
+<div class="page-hero">
+  <div class="page-hero-bg">ABOUT</div>
+  <a href="index.html" class="page-hero-back reveal">← Back to home</a>
+  <div class="hero-grid">
+    <div>
+      <div class="section-label reveal">The Designer</div>
+      <h1 class="hero-title reveal reveal-delay-1">
+        Jeevan<br><span class="accent">Raj.</span>
+      </h1>
+    </div>
+    <div class="hero-right">
+      <p class="hero-intro reveal reveal-delay-2">
+        <strong>Engineer by degree. Designer by obsession.</strong><br>
+        Started with Photoshop posters for my brother's chess academy.
+        Ended up designing core banking for 10 million users in Myanmar —
+        without ever meeting a single one of them.
+      </p>
+      <div class="hero-tags reveal reveal-delay-3">
+        <span class="tag">Lead Product Designer</span>
+        <span class="tag">Chennai</span>
+        <span class="tag">7 Years</span>
+        <span class="tag">Open to Global</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- STORY SECTION -->
+<div class="story-section">
+  <div class="story-nav">
+    <div class="story-nav-item active" data-target="ch-2016">2016 — The beginning</div>
+    <div class="story-nav-item" data-target="ch-2018">2018 — First job</div>
+    <div class="story-nav-item" data-target="ch-2019">2019 — Going solo</div>
+    <div class="story-nav-item" data-target="ch-2020">2020 — doodleblue</div>
+    <div class="story-nav-item" data-target="ch-2021">2021 — CodeStax</div>
+    <div class="story-nav-item" data-target="ch-now">Now</div>
+  </div>
+
+  <div class="story-content">
+
+    <div class="story-chapter reveal" id="ch-2016">
+      <div class="chapter-year">2016 — The beginning</div>
+      <h2 class="chapter-title">A photo edit. A chess academy. A career.</h2>
+      <p class="chapter-text">
+        It started because my brother needed better posters for his chess academy.
+        I had free time in college, a pirated copy of Photoshop, and a YouTube
+        algorithm that would teach me anything for free. I started making banners,
+        brochures, pamphlets, logos for local clients in Dindigul.
+      </p>
+      <p class="chapter-text">
+        No formal design education. No bootcamp. Just me and the internet.
+        <strong>Self-taught is a nice way of saying I made every mistake before anyone
+        could stop me</strong> — and learned faster because of it.
+      </p>
+      <div class="chapter-highlight">
+        "I didn't choose design. Design was just the thing that made me feel like I was
+        solving something real."
+      </div>
+    </div>
+
+    <div class="story-chapter reveal" id="ch-2018">
+      <div class="chapter-year">2018 — First full-time job</div>
+      <h2 class="chapter-title">Hitasoft. White-label products. Adobe XD. A team of 4.</h2>
+      <p class="chapter-text">
+        Joined Hitasoft Technology Solutions in Madurai as a UI Designer. White-label
+        company — Amazon-like marketplaces, Airbnb-like rentals, Uber-like rides, OLX clones,
+        live chat. All customized for clients across industries.
+      </p>
+      <p class="chapter-text">
+        The whole team was designing in Photoshop. Adobe XD had just launched.
+        I was the fresher who convinced my manager to switch. Made everyone learn it by
+        showing what prototyping could do — clients clicking through flows instead of staring
+        at static screens. <strong>That was my first lesson in design advocacy.</strong>
+      </p>
+      <p class="chapter-text">
+        Six months in, I was leading a team of 4 — two UI developers included. Learned After Effects,
+        motion micro-interactions, rebranded the company using 3D objects and motion graphics.
+        Left April 2019 after 10 months, having learned more than I expected.
+      </p>
+    </div>
+
+    <div class="story-chapter reveal" id="ch-2019">
+      <div class="chapter-year">2019 — Going solo at a startup</div>
+      <h2 class="chapter-title">Parampriti. Solo designer. 15+ clients. One Lenco watch.</h2>
+      <p class="chapter-text">
+        Joined Parampriti Web as the only designer at a startup studio in Chennai.
+        Shipped websites and web apps for a wide range of clients —
+        <strong>PMIST (Periyar Maniammai Institute)</strong>, Periyar Thidal,
+        construction brands (Polux, Krishna, Landmark, Urbando),
+        and Lenco Watches, a sub-brand of Ajanta Clocks.
+      </p>
+      <p class="chapter-text">
+        The Lenco e-commerce project got huge appreciation from both client and users.
+        The parallax design I built for it was one of the most appreciated things I'd done
+        at that point. First time I felt like design had a real multiplier effect on business.
+      </p>
+      <p class="chapter-text">
+        The PMIST university website was another landmark — hundreds of pages, completely
+        revamped with modern, minimalistic design within their brand guidelines. Took about a
+        month. <strong>Being the only designer at a startup teaches you speed, ownership,
+        and tolerance for ambiguity.</strong>
+      </p>
+    </div>
+
+    <div class="story-chapter reveal" id="ch-2020">
+      <div class="chapter-year">2020 — doodleblue</div>
+      <h2 class="chapter-title">Pandemic start. Rescue projects. A team of juniors.</h2>
+      <p class="chapter-text">
+        Joined doodleblue in December 2020 — right in the middle of COVID. Worked remotely
+        on multiple projects from start to end. Two of the most memorable ones came to me
+        <strong>after previous designers had been rejected.</strong>
+      </p>
+      <p class="chapter-text">
+        <strong>Mr.Med</strong> — an e-pharmacy web app. Two designers' rounds had been
+        rejected by the client. I reviewed the rejections, understood the pattern, redesigned
+        around the user's emotional state (anxious, in a hurry, needing trust). Third round approved.
+        Shipped live.
+      </p>
+      <p class="chapter-text">
+        <strong>BeyondSkool</strong> — a special education platform for kids with learning needs.
+        Again, previous rounds rejected. I designed three separate experiences within one product —
+        for students, parents, and teachers — without conflating them. Approved and shipped.
+      </p>
+      <div class="chapter-highlight">
+        "Rescue projects taught me more than clean starts. Two rounds of rejection is two rounds
+        of free insight. Read the failures first."
+      </div>
+      <p class="chapter-text">
+        Also mentored 3 junior designers here, introduced structured handoff and review processes.
+        Left September 2021.
+      </p>
+    </div>
+
+    <div class="story-chapter reveal" id="ch-2021">
+      <div class="chapter-year">2021 — CodeStax.Ai</div>
+      <h2 class="chapter-title">3000 screens. A SaaS from zero. A team I built.</h2>
+      <p class="chapter-text">
+        Joined CodeStax.Ai (then Trinom Digital) in October 2021 as the only designer.
+        First major project: <strong>KBZ Bank core banking redesign</strong> — one of Myanmar's
+        largest banks, 10M+ active users, working with a core banking partner to rebuild the
+        entire platform from scratch.
+      </p>
+      <p class="chapter-text">
+        Myanmar's political crisis made direct user research impossible. Internet was unstable,
+        travel was out of the question. I rebuilt my research approach from secondary sources —
+        Play Store reviews, competitor benchmarking across 20+ Asian banking apps, stakeholder
+        workshops to extract ground truth. <strong>I designed 3000+ screens</strong> across web,
+        mobile, and responsive web, in both English and Burmese.
+      </p>
+      <p class="chapter-text">
+        Then <strong>FlowStax</strong> — CodeStax's first in-house product. A no-code workflow
+        builder that digitized decades of manual paper-based bank operations. I was the sole
+        designer, 0 to 1, from concept to design system. The company's first component library.
+        Now processing 2M+ tokens.
+      </p>
+      <p class="chapter-text">
+        Then <strong>MyMedicine</strong> — a healthcare app born during Myanmar's COVID+political
+        crisis. Started as doctor booking, scaled to 6+ services (pharmacy, lab, nurse, hospital,
+        corporate, AI chatbot) with a 2-person design team. Mobile + web + admin portals for every
+        service.
+      </p>
+      <p class="chapter-text">
+        Alongside all of this: hired, trained, and promoted 3 designers from intern → UX Designer II.
+        Built the company's first design system, first skill matrix, weekly design rituals, monthly
+        no-AI creative jams. Co-led LinkedIn from 0 to 1000+ followers in 4 months.
+      </p>
+    </div>
+
+    <div class="story-chapter reveal" id="ch-now">
+      <div class="chapter-year">Now — What I'm focused on</div>
+      <h2 class="chapter-title">AI-assisted design. Systems as prompt libraries. What comes next.</h2>
+      <p class="chapter-text">
+        I'm currently focused on how AI changes the designer's job — specifically, how
+        design systems can become prompt libraries that let AI generate on-brand screens
+        automatically. Experimenting with this at CodeStax. Early results are promising.
+      </p>
+      <p class="chapter-text">
+        I've been running n8n automations to free up my team's time, working on
+        vibe-coded prototypes that go directly from design intent to working frontend,
+        and generating AI creative assets (images, video, influencer consistency) using
+        ComfyUI pipelines I built before most tools existed.
+      </p>
+      <div class="chapter-highlight">
+        "The designer's job isn't going away. It's shifting. Strategy, research, systems thinking,
+        and taste get more valuable. Pushing pixels gets less."
+      </div>
+      <p class="chapter-text">
+        I'm looking for my next mission — a role where design has real weight in product
+        decisions, a team I can grow with and lead, a product where complexity is the feature,
+        not the bug. Fintech, SaaS, healthcare, or anywhere that needs systems thinking at scale.
+      </p>
+    </div>
+
+  </div>
+</div>
+
+<!-- IDENTITY CARDS -->
+<div class="identity-section">
+  <div class="section-label reveal">What drives me</div>
+  <h2 class="section-title reveal reveal-delay-1">How I actually think.</h2>
+
+  <div class="identity-grid">
+    <div class="identity-card reveal">
+      <div class="identity-icon">⬡</div>
+      <div class="identity-title">Systems before screens</div>
+      <div class="identity-text">You can't design 3000 screens one at a time. You design the system, and the screens design themselves. This is the only thing that scales.</div>
+    </div>
+    <div class="identity-card reveal reveal-delay-1">
+      <div class="identity-icon">◎</div>
+      <div class="identity-title">Research is a mindset, not a checklist</div>
+      <div class="identity-text">I designed for 10M users in Myanmar without ever meeting one. Research isn't just interviews — it's finding signal anywhere it exists. Secondary sources, competitor teardowns, proxy stakeholders.</div>
+    </div>
+    <div class="identity-card reveal reveal-delay-2">
+      <div class="identity-icon">↑</div>
+      <div class="identity-title">Mentor by showing, not telling</div>
+      <div class="identity-text">I sit with designers and solve together. The lesson is absorbed, not memorized. Feedback without collaboration is just criticism.</div>
+    </div>
+    <div class="identity-card reveal reveal-delay-3">
+      <div class="identity-icon">✦</div>
+      <div class="identity-title">Cultural UX is real</div>
+      <div class="identity-text">What feels "clean" in San Francisco feels "empty" in Yangon. Design norms are cultural. I've learned this the hard way and it's changed how I approach every product.</div>
+    </div>
+  </div>
+</div>
+
+<!-- CURRENTLY -->
+<div class="currently-section">
+  <div class="section-label reveal">Right now</div>
+  <h2 class="section-title reveal reveal-delay-1">What I'm obsessing over.</h2>
+
+  <div class="currently-grid">
+    <div class="currently-item reveal">
+      <div class="currently-bullet"></div>
+      <div class="currently-text">
+        <strong>AI-assisted design workflows</strong>
+        n8n automations, ComfyUI pipelines, turning design systems into prompt libraries that generate on-brand screens automatically.
+      </div>
+    </div>
+    <div class="currently-item reveal reveal-delay-1">
+      <div class="currently-bullet"></div>
+      <div class="currently-text">
+        <strong>Vibe coding & design-to-code</strong>
+        Building functional frontend prototypes with AI-assisted coding tools. Reducing the gap between design intent and shipped code.
+      </div>
+    </div>
+    <div class="currently-item reveal reveal-delay-2">
+      <div class="currently-bullet"></div>
+      <div class="currently-text">
+        <strong>Team design maturity</strong>
+        How design functions grow from service to strategic. Building skill matrices, review rituals, and creative constraints that make teams better.
+      </div>
+    </div>
+    <div class="currently-item reveal reveal-delay-3">
+      <div class="currently-bullet"></div>
+      <div class="currently-text">
+        <strong>What comes next</strong>
+        Looking for Lead/Staff Product Designer or Design Manager roles in fintech, SaaS, or healthcare. Open to remote or relocation.
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-left">© 2026 Jeevan Raj · Lead Product Designer</div>
+  <div class="footer-oppy"><em>Dedicated to Oppy — who worked alone, far from home, and never stopped reporting back.</em></div>
+  <div class="footer-right">
+    <a href="mailto:jeevanraj2705@gmail.com">Email</a>
+    <a href="index.html">Home</a>
+    <a href="contact.html">Contact</a>
+  </div>
+</footer>
+
+<script>
+const html=document.documentElement,toggle=document.getElementById('themeToggle');
+let theme='dark';
+toggle.addEventListener('click',()=>{theme=theme==='dark'?'light':'dark';html.setAttribute('data-theme',theme);toggle.textContent=theme==='dark'?'☾':'☀'});
+const reveals=document.querySelectorAll('.reveal');
+const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('revealed')})},{threshold:.1,rootMargin:'0px 0px -60px 0px'});
+reveals.forEach(el=>obs.observe(el));
+document.querySelectorAll('.page-hero .reveal').forEach((el,i)=>setTimeout(()=>el.classList.add('revealed'),200+i*150));
+// Story nav scroll
+const chapters=document.querySelectorAll('.story-chapter');
+const navItems=document.querySelectorAll('.story-nav-item');
+const chapterObs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){navItems.forEach(n=>n.classList.remove('active'));const active=document.querySelector(`.story-nav-item[data-target="${e.target.id}"]`);if(active)active.classList.add('active')}})},{threshold:.4});
+chapters.forEach(c=>chapterObs.observe(c));
+navItems.forEach(item=>{item.addEventListener('click',()=>{document.getElementById(item.dataset.target)?.scrollIntoView({behavior:'smooth',block:'start'})})});
+// Nav scroll
+let last=0;const nav=document.getElementById('navbar');
+window.addEventListener('scroll',()=>{const c=window.scrollY;nav.style.transform=c>last&&c>120?'translateY(-100%)':'translateY(0)';last=c},{passive:true});
+</script>
+</body>
+</html>

@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact — Jeevan Raj</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@200;300;400;500;600;700;800;900&family=Bitcount+Grid+Double:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{--font-display:'Unbounded',sans-serif;--font-body:'Bitcount Grid Double',monospace;--bg:#F5F3EE;--bg-2:#EDEBE4;--bg-3:#E4E1D8;--ink:#1A1916;--ink-2:#3D3B36;--ink-3:#6B6860;--ink-4:#9B9890;--line:rgba(26,25,22,0.12);--accent:#C4522A;--accent-2:#A03E1E;--accent-tint:rgba(196,82,42,0.08);--card-bg:#ECEAE3;--card-border:rgba(26,25,22,0.08);--tag-bg:rgba(26,25,22,0.06);--tag-color:#3D3B36}
+[data-theme="dark"]{--bg:#111110;--bg-2:#191917;--bg-3:#222220;--ink:#F0EDE6;--ink-2:#C8C5BC;--ink-3:#8A877E;--ink-4:#5A5750;--line:rgba(240,237,230,0.1);--accent:#E8724A;--accent-2:#C4522A;--accent-tint:rgba(232,114,74,0.1);--card-bg:#1C1C1A;--card-border:rgba(240,237,230,0.06);--tag-bg:rgba(240,237,230,0.06);--tag-color:#C8C5BC}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{font-size:16px;scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);font-family:var(--font-body);line-height:1.6;transition:background .4s ease,color .4s ease;overflow-x:hidden;min-height:100vh}
+::selection{background:var(--accent);color:#fff}
+a{color:inherit;text-decoration:none}
+::-webkit-scrollbar{width:3px}::-webkit-scrollbar-track{background:var(--bg)}::-webkit-scrollbar-thumb{background:var(--accent);border-radius:99px}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:20px 48px;display:flex;align-items:center;justify-content:space-between;backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);background:rgba(17,17,16,.75);border-bottom:1px solid var(--line);transition:transform .35s ease,background .4s ease}
+[data-theme="light"] nav{background:rgba(245,243,238,.85)}
+.nav-logo{font-family:var(--font-display);font-size:.875rem;font-weight:600;letter-spacing:.08em;color:var(--ink);text-transform:uppercase}
+.nav-logo span{color:var(--accent)}
+.nav-links{display:flex;align-items:center;gap:32px;list-style:none}
+.nav-links a{font-family:var(--font-display);font-size:.58rem;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-3);transition:color .2s ease;position:relative}
+.nav-links a::after{content:'';position:absolute;bottom:-2px;left:0;width:0;height:1px;background:var(--accent);transition:width .3s ease}
+.nav-links a:hover,.nav-links a.active{color:var(--ink)}
+.nav-links a:hover::after,.nav-links a.active::after{width:100%}
+.theme-toggle{width:36px;height:36px;border-radius:50%;border:1px solid var(--line);background:var(--card-bg);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:.875rem;transition:all .2s ease;color:var(--ink-2)}
+.theme-toggle:hover{border-color:var(--accent);color:var(--accent);transform:rotate(20deg)}
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .7s ease,transform .7s ease}
+.reveal.revealed{opacity:1;transform:translateY(0)}
+.reveal-delay-1{transition-delay:.1s}.reveal-delay-2{transition-delay:.2s}.reveal-delay-3{transition-delay:.3s}.reveal-delay-4{transition-delay:.4s}.reveal-delay-5{transition-delay:.5s}
+.section-label{font-family:var(--font-display);font-size:.5rem;font-weight:600;letter-spacing:.25em;text-transform:uppercase;color:var(--accent);display:flex;align-items:center;gap:12px;margin-bottom:20px}
+.section-label::before{content:'';width:20px;height:1px;background:var(--accent)}
+
+/* HERO */
+.contact-hero{min-height:60vh;padding:160px 48px 80px;display:flex;flex-direction:column;justify-content:center;background:var(--bg-2);border-bottom:1px solid var(--line);position:relative;overflow:hidden}
+.contact-hero-bg{position:absolute;right:-40px;bottom:-40px;font-family:var(--font-display);font-size:20vw;font-weight:900;color:var(--line);letter-spacing:-.06em;pointer-events:none;line-height:1}
+.back-link{font-family:var(--font-display);font-size:.55rem;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-4);display:inline-flex;align-items:center;gap:8px;margin-bottom:40px;transition:color .2s ease}
+.back-link:hover{color:var(--accent)}
+.hero-headline{font-family:var(--font-display);font-size:clamp(4rem,10vw,10rem);font-weight:800;line-height:.88;letter-spacing:-.04em;color:var(--ink);margin-bottom:32px}
+.hero-headline .accent{color:var(--accent)}
+.hero-sub{font-family:var(--font-display);font-size:.9rem;font-weight:300;color:var(--ink-3);max-width:500px;line-height:1.75}
+
+/* MAIN CONTACT GRID */
+.contact-body{display:grid;grid-template-columns:1fr 1fr;min-height:60vh}
+
+/* LEFT — Direct contact */
+.contact-left{padding:80px 48px;border-right:1px solid var(--line)}
+.direct-links{display:flex;flex-direction:column;gap:2px;margin-top:40px}
+.direct-link{display:flex;align-items:center;justify-content:space-between;padding:24px 28px;background:var(--card-bg);border:1px solid var(--card-border);transition:all .3s ease;cursor:pointer;text-decoration:none}
+.direct-link:hover{background:var(--accent);border-color:var(--accent)}
+.direct-link:hover .dl-label,.direct-link:hover .dl-value,.direct-link:hover .dl-arrow{color:#fff}
+.dl-label{font-family:var(--font-display);font-size:.45rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--ink-4);margin-bottom:6px;transition:color .2s ease}
+.dl-value{font-family:var(--font-display);font-size:.875rem;font-weight:600;color:var(--ink);transition:color .2s ease}
+.dl-arrow{font-size:1.25rem;color:var(--ink-4);transition:color .2s ease;flex-shrink:0}
+.avail-badge{display:inline-flex;align-items:center;gap:8px;padding:12px 20px;background:var(--accent-tint);border:1px solid var(--accent);margin-bottom:32px}
+.avail-dot{width:7px;height:7px;background:#4CAF50;border-radius:50%;animation:pulse 2s ease-in-out infinite;flex-shrink:0}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(1.4)}}
+.avail-text{font-family:var(--font-display);font-size:.55rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--accent)}
+
+/* RIGHT — FAQ + Info */
+.contact-right{padding:80px 48px;background:var(--bg)}
+.info-blocks{display:flex;flex-direction:column;gap:2px;margin-top:40px}
+.info-block{background:var(--card-bg);border:1px solid var(--card-border);padding:24px 28px;transition:all .25s ease}
+.info-block:hover{background:var(--bg-3)}
+.info-title{font-family:var(--font-display);font-size:.55rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);margin-bottom:8px}
+.info-text{font-family:var(--font-display);font-size:.8rem;font-weight:400;color:var(--ink-2);line-height:1.65}
+
+/* WHAT I'M LOOKING FOR */
+.looking-section{padding:80px 48px;background:var(--bg-2);border-top:1px solid var(--line)}
+.looking-grid{display:grid;grid-template-columns:1fr 1fr;gap:2px;margin-top:48px}
+.looking-card{background:var(--card-bg);border:1px solid var(--card-border);padding:32px;position:relative;overflow:hidden;transition:all .3s ease}
+.looking-card::before{content:'';position:absolute;top:0;left:0;width:3px;height:0;background:var(--accent);transition:height .4s ease}
+.looking-card:hover::before{height:100%}
+.looking-card:hover{background:var(--bg-3)}
+.looking-card-title{font-family:var(--font-display);font-size:.75rem;font-weight:700;color:var(--ink);margin-bottom:10px;letter-spacing:-.01em}
+.looking-card-text{font-family:var(--font-display);font-size:.7rem;font-weight:300;color:var(--ink-3);line-height:1.7}
+.looking-card-check{font-size:1rem;margin-bottom:12px}
+
+/* NOT LOOKING */
+.not-looking{padding:60px 48px;border-top:1px solid var(--line)}
+.not-title{font-family:var(--font-display);font-size:.6rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-4);margin-bottom:16px}
+.not-list{display:flex;gap:12px;flex-wrap:wrap}
+.not-item{font-family:var(--font-display);font-size:.5rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;padding:8px 14px;background:var(--tag-bg);color:var(--ink-4);border:1px solid var(--line)}
+
+/* BIG CTA */
+.big-cta{padding:100px 48px;background:var(--bg-3);border-top:1px solid var(--line);text-align:center;position:relative;overflow:hidden}
+.big-cta-bg{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);font-family:var(--font-display);font-size:25vw;font-weight:900;color:var(--line);letter-spacing:-.06em;pointer-events:none;white-space:nowrap}
+.big-cta-text{font-family:var(--font-display);font-size:.6rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-4);margin-bottom:20px;position:relative}
+.big-cta-email{font-family:var(--font-display);font-size:clamp(1.5rem,4vw,3.5rem);font-weight:800;letter-spacing:-.02em;color:var(--ink);margin-bottom:32px;position:relative;display:block;transition:color .25s ease}
+.big-cta-email:hover{color:var(--accent)}
+.big-cta-sub{font-family:var(--font-display);font-size:.7rem;font-weight:300;color:var(--ink-4);font-style:italic;position:relative}
+
+footer{background:var(--bg-2);padding:48px;border-top:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px}
+.footer-left{font-family:var(--font-display);font-size:.5rem;font-weight:500;letter-spacing:.15em;text-transform:uppercase;color:var(--ink-4)}
+.footer-oppy{font-family:var(--font-display);font-size:.7rem;font-weight:300;font-style:italic;color:var(--ink-4);text-align:center}
+.footer-right{display:flex;gap:24px}
+.footer-right a{font-family:var(--font-display);font-size:.5rem;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:var(--ink-4);transition:color .2s ease}
+.footer-right a:hover{color:var(--accent)}
+
+@media(max-width:1024px){nav{padding:16px 24px}.contact-hero{padding:120px 24px 60px}.contact-body{grid-template-columns:1fr}.contact-left{border-right:none;border-bottom:1px solid var(--line);padding:60px 24px}.contact-right{padding:60px 24px}.looking-grid{grid-template-columns:1fr}.looking-section,.not-looking,.big-cta{padding-left:24px;padding-right:24px}footer{flex-direction:column;text-align:center;padding:32px 24px}}
+@media(max-width:640px){.nav-links{display:none}.hero-headline{font-size:clamp(3rem,14vw,6rem)}}
+</style>
+</head>
+<body>
+<nav id="navbar">
+  <a href="index.html" class="nav-logo">J<span>.</span>Raj</a>
+  <ul class="nav-links">
+    <li><a href="index.html#work">Work</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="index.html#experience">Experience</a></li>
+    <li><a href="leadership.html">Leadership</a></li>
+    <li><a href="contact.html" class="active">Contact</a></li>
+  </ul>
+  <button class="theme-toggle" id="themeToggle">☾</button>
+</nav>
+
+<!-- HERO -->
+<div class="contact-hero">
+  <div class="contact-hero-bg">HELLO</div>
+  <a href="index.html" class="back-link reveal">← Back to home</a>
+  <h1 class="hero-headline reveal reveal-delay-1">
+    Let's<br><span class="accent">talk.</span>
+  </h1>
+  <p class="hero-sub reveal reveal-delay-2">
+    I'm looking for my next mission — a role where design has real weight in product decisions,
+    a team I can grow with, and a product where complexity is the feature, not the bug.
+  </p>
+</div>
+
+<!-- CONTACT BODY -->
+<div class="contact-body">
+
+  <!-- LEFT -->
+  <div class="contact-left">
+    <div class="section-label reveal">Direct contact</div>
+    <h2 style="font-family:var(--font-display);font-size:1.75rem;font-weight:700;letter-spacing:-.02em;color:var(--ink);margin-bottom:20px" class="reveal reveal-delay-1">Reach me directly.</h2>
+
+    <div class="avail-badge reveal reveal-delay-2">
+      <div class="avail-dot"></div>
+      <div class="avail-text">Currently available for new roles</div>
+    </div>
+
+    <div class="direct-links">
+      <a href="mailto:jeevanraj2705@gmail.com" class="direct-link reveal reveal-delay-2">
+        <div>
+          <div class="dl-label">Email — Primary</div>
+          <div class="dl-value">jeevanraj2705@gmail.com</div>
+        </div>
+        <div class="dl-arrow">→</div>
+      </a>
+      <a href="tel:+919597589717" class="direct-link reveal reveal-delay-3">
+        <div>
+          <div class="dl-label">Phone — Call or WhatsApp</div>
+          <div class="dl-value">+91 95975 89717</div>
+        </div>
+        <div class="dl-arrow">→</div>
+      </a>
+      <div class="direct-link reveal reveal-delay-4">
+        <div>
+          <div class="dl-label">Location</div>
+          <div class="dl-value">Chennai, Tamil Nadu, India</div>
+        </div>
+        <div class="dl-arrow">📍</div>
+      </div>
+      <div class="direct-link reveal reveal-delay-5">
+        <div>
+          <div class="dl-label">Relocation & Remote</div>
+          <div class="dl-value">Open to Bengaluru · Remote · Global</div>
+        </div>
+        <div class="dl-arrow">🌐</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- RIGHT -->
+  <div class="contact-right">
+    <div class="section-label reveal">About this conversation</div>
+    <h2 style="font-family:var(--font-display);font-size:1.75rem;font-weight:700;letter-spacing:-.02em;color:var(--ink);margin-bottom:20px" class="reveal reveal-delay-1">Good to know.</h2>
+
+    <div class="info-blocks">
+      <div class="info-block reveal reveal-delay-2">
+        <div class="info-title">Response time</div>
+        <div class="info-text">24 hours, usually less. I check email daily and WhatsApp is always faster.</div>
+      </div>
+      <div class="info-block reveal reveal-delay-3">
+        <div class="info-title">What I'm looking for</div>
+        <div class="info-text">Lead / Senior / Staff Product Designer or Design Manager. Fintech, SaaS, healthcare preferred. Enterprise complexity welcome. Startup pace fine too.</div>
+      </div>
+      <div class="info-block reveal reveal-delay-4">
+        <div class="info-title">Interview process</div>
+        <div class="info-text">Happy to do portfolio walks, design critiques, case study presentations, or system design exercises. I prefer showing work over describing it.</div>
+      </div>
+      <div class="info-block reveal reveal-delay-5">
+        <div class="info-title">Notice period</div>
+        <div class="info-text">Currently serving — let's discuss timing. I'll be transparent about where I am in the process.</div>
+      </div>
+      <div class="info-block reveal">
+        <div class="info-title">Compensation</div>
+        <div class="info-text">Market rate for Senior / Lead level in India or equivalent global rate for remote. Let's have the conversation.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- WHAT I'M LOOKING FOR -->
+<div class="looking-section">
+  <div class="section-label reveal">What I'm looking for</div>
+  <h2 style="font-family:var(--font-display);font-size:clamp(2rem,4vw,3.5rem);font-weight:700;letter-spacing:-.02em;color:var(--ink);line-height:1.05;margin-bottom:8px" class="reveal reveal-delay-1">The right next mission.</h2>
+  <p style="font-family:var(--font-display);font-size:.875rem;font-weight:300;color:var(--ink-3);max-width:480px;line-height:1.7;margin-bottom:0" class="reveal reveal-delay-2">These are the things I care about most in a next role.</p>
+
+  <div class="looking-grid">
+    <div class="looking-card reveal">
+      <div class="looking-card-check">⬡</div>
+      <div class="looking-card-title">Design with real product weight</div>
+      <div class="looking-card-text">Design isn't a service function — it's a core input to what gets built. I want to be in the room where roadmap decisions happen, not handed specs after the fact.</div>
+    </div>
+    <div class="looking-card reveal reveal-delay-1">
+      <div class="looking-card-check">↑</div>
+      <div class="looking-card-title">A team I can lead and grow</div>
+      <div class="looking-card-text">I've built a team from zero. I want to do it again with more resources — and the support to mentor designers, build rituals, and raise the design bar over time.</div>
+    </div>
+    <div class="looking-card reveal reveal-delay-2">
+      <div class="looking-card-check">◎</div>
+      <div class="looking-card-title">Complex domain, complex product</div>
+      <div class="looking-card-text">Fintech, healthcare, enterprise SaaS — products where the problem is genuinely hard and design systems thinking is necessary, not optional. I don't do simple.</div>
+    </div>
+    <div class="looking-card reveal reveal-delay-3">
+      <div class="looking-card-check">✦</div>
+      <div class="looking-card-title">Space to experiment with AI</div>
+      <div class="looking-card-text">I've been running n8n automations and ComfyUI pipelines for years. I want a culture that encourages using AI to make designers better, not threatened.</div>
+    </div>
+  </div>
+</div>
+
+<!-- NOT LOOKING FOR -->
+<div class="not-looking">
+  <div class="not-title reveal">Not a fit for</div>
+  <div class="not-list reveal reveal-delay-1">
+    <span class="not-item">Pure visual / brand design</span>
+    <span class="not-item">Part-time</span>
+    <span class="not-item">Agency / freelance only</span>
+    <span class="not-item">6-week design review cycles</span>
+    <span class="not-item">Design as decoration</span>
+  </div>
+</div>
+
+<!-- BIG EMAIL CTA -->
+<div class="big-cta">
+  <div class="big-cta-bg">HI</div>
+  <div class="big-cta-text reveal">The best way to start</div>
+  <a href="mailto:jeevanraj2705@gmail.com" class="big-cta-email reveal reveal-delay-1">
+    jeevanraj2705@gmail.com
+  </a>
+  <div class="big-cta-sub reveal reveal-delay-2">Response time: 24 hours Earth-standard.</div>
+</div>
+
+<footer>
+  <div class="footer-left">© 2026 Jeevan Raj · Lead Product Designer</div>
+  <div class="footer-oppy"><em>Dedicated to Oppy — who worked alone, far from home, and never stopped reporting back.</em></div>
+  <div class="footer-right">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="leadership.html">Leadership</a>
+  </div>
+</footer>
+
+<script>
+const html=document.documentElement,toggle=document.getElementById('themeToggle');
+let theme='dark';
+toggle.addEventListener('click',()=>{theme=theme==='dark'?'light':'dark';html.setAttribute('data-theme',theme);toggle.textContent=theme==='dark'?'☾':'☀'});
+const reveals=document.querySelectorAll('.reveal');
+const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('revealed')})},{threshold:.1,rootMargin:'0px 0px -60px 0px'});
+reveals.forEach(el=>obs.observe(el));
+document.querySelectorAll('.contact-hero .reveal,.back-link.reveal').forEach((el,i)=>setTimeout(()=>el.classList.add('revealed'),200+i*150));
+let last=0;const nav=document.getElementById('navbar');
+window.addEventListener('scroll',()=>{const c=window.scrollY;nav.style.transform=c>last&&c>120?'translateY(-100%)':'translateY(0)';last=c},{passive:true});
+</script>
+</body>
+</html>
