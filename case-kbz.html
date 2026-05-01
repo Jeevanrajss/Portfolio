@@ -1,301 +1,1054 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="dark">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>KBZ Bank — Jeevan Raj</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@200;300;400;500;600;700;800;900&family=Bitcount+Grid+Double:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-<style>
-:root{--font-display:'Unbounded',sans-serif;--font-body:'Bitcount Grid Double',monospace;--bg:#F5F3EE;--bg-2:#EDEBE4;--bg-3:#E4E1D8;--ink:#1A1916;--ink-2:#3D3B36;--ink-3:#6B6860;--ink-4:#9B9890;--line:rgba(26,25,22,0.12);--accent:#C4522A;--accent-2:#A03E1E;--accent-tint:rgba(196,82,42,0.08);--card-bg:#ECEAE3;--card-border:rgba(26,25,22,0.08);--tag-bg:rgba(26,25,22,0.06);--tag-color:#3D3B36}
-[data-theme="dark"]{--bg:#111110;--bg-2:#191917;--bg-3:#222220;--ink:#F0EDE6;--ink-2:#C8C5BC;--ink-3:#8A877E;--ink-4:#5A5750;--line:rgba(240,237,230,0.1);--accent:#E8724A;--accent-2:#C4522A;--accent-tint:rgba(232,114,74,0.1);--card-bg:#1C1C1A;--card-border:rgba(240,237,230,0.06);--tag-bg:rgba(240,237,230,0.06);--tag-color:#C8C5BC}
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-html{font-size:16px;scroll-behavior:smooth}
-body{background:var(--bg);color:var(--ink);font-family:var(--font-body);line-height:1.6;transition:background .4s ease,color .4s ease;overflow-x:hidden}
-::selection{background:var(--accent);color:#fff}
-a{color:inherit;text-decoration:none}
-::-webkit-scrollbar{width:3px}::-webkit-scrollbar-track{background:var(--bg)}::-webkit-scrollbar-thumb{background:var(--accent);border-radius:99px}
-nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:20px 48px;display:flex;align-items:center;justify-content:space-between;backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);background:rgba(17,17,16,.75);border-bottom:1px solid var(--line);transition:transform .35s ease,background .4s ease}
-[data-theme="light"] nav{background:rgba(245,243,238,.85)}
-.nav-logo{font-family:var(--font-display);font-size:.875rem;font-weight:600;letter-spacing:.08em;color:var(--ink);text-transform:uppercase}
-.nav-logo span{color:var(--accent)}
-.nav-links{display:flex;align-items:center;gap:32px;list-style:none}
-.nav-links a{font-family:var(--font-display);font-size:.58rem;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-3);transition:color .2s ease;position:relative}
-.nav-links a::after{content:'';position:absolute;bottom:-2px;left:0;width:0;height:1px;background:var(--accent);transition:width .3s ease}
-.nav-links a:hover{color:var(--ink)}
-.nav-links a:hover::after{width:100%}
-.theme-toggle{width:36px;height:36px;border-radius:50%;border:1px solid var(--line);background:var(--card-bg);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:.875rem;transition:all .2s ease;color:var(--ink-2)}
-.theme-toggle:hover{border-color:var(--accent);color:var(--accent);transform:rotate(20deg)}
-.reveal{opacity:0;transform:translateY(28px);transition:opacity .7s ease,transform .7s ease}
-.reveal.revealed{opacity:1;transform:translateY(0)}
-.reveal-delay-1{transition-delay:.1s}.reveal-delay-2{transition-delay:.2s}.reveal-delay-3{transition-delay:.3s}.reveal-delay-4{transition-delay:.4s}
+  <script>
+    (function () {
+      var savedTheme = localStorage.getItem('theme') || 'dark';
+      document.documentElement.setAttribute('data-theme', savedTheme);
+    })();
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KBZ Bank — Jeevan Raj</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Unbounded:wght@200;300;400;500;600;700;800;900&family=Bitcount+Grid+Double:wght@100;200;300;400;500;600;700;800;900&display=swap"
+    rel="stylesheet">
+  <style>
+    :root {
+      --font-display: 'Unbounded', sans-serif;
+      --font-body: 'Bitcount Grid Double', monospace;
+      --bg: #F5F3EE;
+      --bg-2: #EDEBE4;
+      --bg-3: #E4E1D8;
+      --ink: #1A1916;
+      --ink-2: #3D3B36;
+      --ink-3: #6B6860;
+      --ink-4: #9B9890;
+      --line: rgba(26, 25, 22, 0.12);
+      --accent: #C4522A;
+      --accent-2: #A03E1E;
+      --accent-tint: rgba(196, 82, 42, 0.08);
+      --card-bg: #ECEAE3;
+      --card-border: rgba(26, 25, 22, 0.08);
+      --tag-bg: rgba(26, 25, 22, 0.06);
+      --tag-color: #3D3B36
+    }
 
-/* CASE STUDY HERO */
-.cs-hero{padding:140px 48px 0;background:var(--bg-2);position:relative;overflow:hidden;border-bottom:1px solid var(--line)}
-.cs-hero-bg{position:absolute;right:-60px;top:50%;transform:translateY(-50%);font-family:var(--font-display);font-size:20vw;font-weight:900;color:var(--line);letter-spacing:-.06em;pointer-events:none;line-height:1}
-.back-link{font-family:var(--font-display);font-size:.55rem;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-4);display:inline-flex;align-items:center;gap:8px;margin-bottom:40px;transition:color .2s ease;position:relative;z-index:1}
-.back-link:hover{color:var(--accent)}
-.cs-label{font-family:var(--font-display);font-size:.45rem;font-weight:700;letter-spacing:.25em;text-transform:uppercase;color:var(--accent);display:flex;align-items:center;gap:10px;margin-bottom:20px;position:relative;z-index:1}
-.cs-label::before{content:'';width:20px;height:1px;background:var(--accent)}
-.cs-title{font-family:var(--font-display);font-size:clamp(2.5rem,6vw,6rem);font-weight:800;line-height:.92;letter-spacing:-.03em;color:var(--ink);margin-bottom:20px;position:relative;z-index:1;max-width:800px}
-.cs-hook{font-family:var(--font-display);font-size:1rem;font-weight:300;color:var(--ink-3);line-height:1.7;max-width:600px;margin-bottom:40px;position:relative;z-index:1;font-style:italic}
-.cs-meta{display:flex;gap:0;border-top:1px solid var(--line);margin-top:40px;position:relative;z-index:1}
-.cs-meta-item{padding:24px 32px;border-right:1px solid var(--line);flex:1}
-.cs-meta-item:last-child{border-right:none}
-.cs-meta-label{font-family:var(--font-display);font-size:.42rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--ink-4);margin-bottom:6px}
-.cs-meta-value{font-family:var(--font-display);font-size:.75rem;font-weight:600;color:var(--ink)}
+    [data-theme="dark"] {
+      --bg: #111110;
+      --bg-2: #191917;
+      --bg-3: #222220;
+      --ink: #F0EDE6;
+      --ink-2: #C8C5BC;
+      --ink-3: #8A877E;
+      --ink-4: #5A5750;
+      --line: rgba(240, 237, 230, 0.1);
+      --accent: #E8724A;
+      --accent-2: #C4522A;
+      --accent-tint: rgba(232, 114, 74, 0.1);
+      --card-bg: #1C1C1A;
+      --card-border: rgba(240, 237, 230, 0.06);
+      --tag-bg: rgba(240, 237, 230, 0.06);
+      --tag-color: #C8C5BC
+    }
 
-/* BODY LAYOUT */
-.cs-body{display:grid;grid-template-columns:220px 1fr;gap:0;position:relative}
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0
+    }
 
-/* STICKY NAV */
-.cs-sidenav{position:sticky;top:80px;height:fit-content;padding:48px 24px;border-right:1px solid var(--line)}
-.sidenav-item{display:block;font-family:var(--font-display);font-size:.48rem;font-weight:500;letter-spacing:.15em;text-transform:uppercase;color:var(--ink-4);padding:10px 12px;border-left:2px solid transparent;transition:all .25s ease;cursor:pointer;margin-bottom:2px}
-.sidenav-item:hover,.sidenav-item.active{color:var(--accent);border-left-color:var(--accent);background:var(--accent-tint)}
+    html {
+      font-size: 16px;
+      scroll-behavior: smooth
+    }
 
-/* CONTENT */
-.cs-content{padding:60px 64px 100px}
-.cs-section{margin-bottom:80px;scroll-margin-top:100px}
-.cs-section:last-child{margin-bottom:0}
-.cs-section-label{font-family:var(--font-display);font-size:.45rem;font-weight:700;letter-spacing:.25em;text-transform:uppercase;color:var(--accent);display:flex;align-items:center;gap:10px;margin-bottom:16px}
-.cs-section-label::before{content:'';width:16px;height:1px;background:var(--accent)}
-.cs-section-title{font-family:var(--font-display);font-size:1.75rem;font-weight:700;letter-spacing:-.02em;color:var(--ink);margin-bottom:24px;line-height:1.15}
-.cs-text{font-family:var(--font-display);font-size:.85rem;font-weight:300;color:var(--ink-2);line-height:1.85;margin-bottom:16px}
-.cs-text strong{color:var(--ink);font-weight:600}
-.cs-text em{color:var(--ink-2);font-style:italic}
-.cs-highlight{background:var(--accent-tint);border-left:2px solid var(--accent);padding:20px 24px;margin:24px 0;font-family:var(--font-display);font-size:.85rem;font-weight:400;color:var(--ink-2);line-height:1.75;font-style:italic}
-.cs-list{list-style:none;display:flex;flex-direction:column;gap:10px;margin:20px 0}
-.cs-list li{font-family:var(--font-display);font-size:.82rem;font-weight:400;color:var(--ink-2);line-height:1.65;padding-left:20px;position:relative}
-.cs-list li::before{content:'—';position:absolute;left:0;color:var(--accent);font-weight:600}
-.cs-list li strong{color:var(--ink);font-weight:600}
-.cs-step{background:var(--card-bg);border:1px solid var(--card-border);padding:28px 32px;margin:12px 0;position:relative;border-left:3px solid var(--accent)}
-.cs-step-num{font-family:var(--font-display);font-size:.42rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);margin-bottom:8px}
-.cs-step-title{font-family:var(--font-display);font-size:.875rem;font-weight:700;color:var(--ink);margin-bottom:10px}
-.cs-step-text{font-family:var(--font-display);font-size:.78rem;font-weight:300;color:var(--ink-3);line-height:1.7}
+    body {
+      background: var(--bg);
+      color: var(--ink);
+      font-family: var(--font-body);
+      line-height: 1.6;
+      transition: background .4s ease, color .4s ease;
+      overflow-x: hidden
+    }
 
-/* IMPACT BLOCK */
-.impact-block{background:var(--bg-2);border:1px solid var(--line);padding:48px;margin:32px 0}
-.impact-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin-bottom:32px}
-.impact-stat{background:var(--card-bg);border:1px solid var(--card-border);padding:28px;text-align:center}
-.impact-n{font-family:var(--font-display);font-size:2.25rem;font-weight:800;color:var(--accent);letter-spacing:-.03em;line-height:1;margin-bottom:8px}
-.impact-l{font-family:var(--font-display);font-size:.48rem;font-weight:500;letter-spacing:.15em;text-transform:uppercase;color:var(--ink-4);line-height:1.5}
-.impact-points{list-style:none;display:flex;flex-direction:column;gap:8px}
-.impact-points li{font-family:var(--font-display);font-size:.8rem;font-weight:400;color:var(--ink-2);line-height:1.6;display:flex;gap:10px;align-items:flex-start}
-.impact-points li::before{content:'✓';color:var(--accent);font-weight:700;flex-shrink:0;margin-top:1px}
+    ::selection {
+      background: var(--accent);
+      color: #fff
+    }
 
-/* LEARNINGS */
-.learning-block{padding:32px 0;border-bottom:1px solid var(--line)}
-.learning-block:first-child{padding-top:0}
-.learning-block:last-child{border-bottom:none}
-.learning-num{font-family:var(--font-display);font-size:.42rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--accent);margin-bottom:8px}
-.learning-title{font-family:var(--font-display);font-size:1rem;font-weight:700;color:var(--ink);margin-bottom:10px;line-height:1.25;letter-spacing:-.01em}
-.learning-text{font-family:var(--font-display);font-size:.8rem;font-weight:300;color:var(--ink-3);line-height:1.75}
+    a {
+      color: inherit;
+      text-decoration: none
+    }
 
-/* NEXT CASE */
-.next-case{background:var(--bg-2);border-top:1px solid var(--line);padding:60px 48px;display:flex;justify-content:space-between;align-items:center;cursor:pointer;transition:all .35s ease;text-decoration:none}
-.next-case:hover{background:var(--bg-3)}
-.next-label{font-family:var(--font-display);font-size:.45rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--ink-4);margin-bottom:8px}
-.next-title{font-family:var(--font-display);font-size:2rem;font-weight:800;letter-spacing:-.02em;color:var(--ink);transition:color .25s ease}
-.next-case:hover .next-title{color:var(--accent)}
-.next-arrow{font-family:var(--font-display);font-size:3rem;color:var(--ink-4);transition:all .3s ease}
-.next-case:hover .next-arrow{color:var(--accent);transform:translateX(12px)}
+    ::-webkit-scrollbar {
+      width: 3px
+    }
 
-footer{background:var(--bg-2);padding:48px;border-top:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px}
-.footer-left{font-family:var(--font-display);font-size:.5rem;font-weight:500;letter-spacing:.15em;text-transform:uppercase;color:var(--ink-4)}
-.footer-oppy{font-family:var(--font-display);font-size:.7rem;font-weight:300;font-style:italic;color:var(--ink-4)}
-.footer-right{display:flex;gap:24px}
-.footer-right a{font-family:var(--font-display);font-size:.5rem;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:var(--ink-4);transition:color .2s ease}
-.footer-right a:hover{color:var(--accent)}
+    ::-webkit-scrollbar-track {
+      background: var(--bg)
+    }
 
-@media(max-width:1024px){nav{padding:16px 24px}.cs-hero{padding:120px 24px 0}.cs-meta{flex-wrap:wrap}.cs-meta-item{min-width:50%;border-bottom:1px solid var(--line)}.cs-body{grid-template-columns:1fr}.cs-sidenav{display:none}.cs-content{padding:40px 24px 80px}.impact-grid{grid-template-columns:1fr 1fr}.next-case{padding:40px 24px}footer{flex-direction:column;text-align:center;padding:32px 24px}}
-@media(max-width:640px){.nav-links{display:none}.cs-title{font-size:clamp(2rem,10vw,4rem)}.impact-grid{grid-template-columns:1fr}}
-</style>
+    ::-webkit-scrollbar-thumb {
+      background: var(--accent);
+      border-radius: 99px
+    }
+
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      padding: 20px 48px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      background: rgba(17, 17, 16, .75);
+      border-bottom: 1px solid var(--line);
+      transition: transform .35s ease, background .4s ease
+    }
+
+    [data-theme="light"] nav {
+      background: rgba(245, 243, 238, .85)
+    }
+
+    .nav-logo {
+      font-family: var(--font-display);
+      font-size: .875rem;
+      font-weight: 600;
+      letter-spacing: .08em;
+      color: var(--ink);
+      text-transform: uppercase
+    }
+
+    .nav-logo span {
+      color: var(--accent)
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      list-style: none
+    }
+
+    .nav-links a {
+      font-family: var(--font-display);
+      font-size: .58rem;
+      font-weight: 500;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--ink-3);
+      transition: color .2s ease;
+      position: relative
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 0;
+      height: 1px;
+      background: var(--accent);
+      transition: width .3s ease
+    }
+
+    .nav-links a:hover {
+      color: var(--ink)
+    }
+
+    .nav-links a:hover::after {
+      width: 100%
+    }
+
+    .theme-toggle {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      border: 1px solid var(--line);
+      background: var(--card-bg);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: .875rem;
+      transition: all .2s ease;
+      color: var(--ink-2)
+    }
+
+    .theme-toggle:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+      transform: rotate(20deg)
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity .7s ease, transform .7s ease
+    }
+
+    .reveal.revealed {
+      opacity: 1;
+      transform: translateY(0)
+    }
+
+    .reveal-delay-1 {
+      transition-delay: .1s
+    }
+
+    .reveal-delay-2 {
+      transition-delay: .2s
+    }
+
+    .reveal-delay-3 {
+      transition-delay: .3s
+    }
+
+    .reveal-delay-4 {
+      transition-delay: .4s
+    }
+
+    /* CASE STUDY HERO */
+    .cs-hero {
+      padding: 140px 48px 0;
+      background: var(--bg-2);
+      position: relative;
+      overflow: hidden;
+      border-bottom: 1px solid var(--line)
+    }
+
+    .cs-hero-bg {
+      position: absolute;
+      right: -60px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-family: var(--font-display);
+      font-size: 20vw;
+      font-weight: 900;
+      color: var(--line);
+      letter-spacing: -.06em;
+      pointer-events: none;
+      line-height: 1
+    }
+
+    .back-link {
+      font-family: var(--font-display);
+      font-size: .55rem;
+      font-weight: 500;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--ink-4);
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 40px;
+      transition: color .2s ease;
+      position: relative;
+      z-index: 1
+    }
+
+    .back-link:hover {
+      color: var(--accent)
+    }
+
+    .cs-label {
+      font-family: var(--font-display);
+      font-size: .45rem;
+      font-weight: 700;
+      letter-spacing: .25em;
+      text-transform: uppercase;
+      color: var(--accent);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 20px;
+      position: relative;
+      z-index: 1
+    }
+
+    .cs-label::before {
+      content: '';
+      width: 20px;
+      height: 1px;
+      background: var(--accent)
+    }
+
+    .cs-title {
+      font-family: var(--font-display);
+      font-size: clamp(2.5rem, 6vw, 6rem);
+      font-weight: 800;
+      line-height: .92;
+      letter-spacing: -.03em;
+      color: var(--ink);
+      margin-bottom: 20px;
+      position: relative;
+      z-index: 1;
+      max-width: 800px
+    }
+
+    .cs-hook {
+      font-family: var(--font-display);
+      font-size: 1rem;
+      font-weight: 300;
+      color: var(--ink-3);
+      line-height: 1.7;
+      max-width: 600px;
+      margin-bottom: 40px;
+      position: relative;
+      z-index: 1;
+      font-style: italic
+    }
+
+    .cs-meta {
+      display: flex;
+      gap: 0;
+      border-top: 1px solid var(--line);
+      margin-top: 40px;
+      position: relative;
+      z-index: 1
+    }
+
+    .cs-meta-item {
+      padding: 24px 32px;
+      border-right: 1px solid var(--line);
+      flex: 1
+    }
+
+    .cs-meta-item:last-child {
+      border-right: none
+    }
+
+    .cs-meta-label {
+      font-family: var(--font-display);
+      font-size: .42rem;
+      font-weight: 700;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      color: var(--ink-4);
+      margin-bottom: 6px
+    }
+
+    .cs-meta-value {
+      font-family: var(--font-display);
+      font-size: .75rem;
+      font-weight: 600;
+      color: var(--ink)
+    }
+
+    /* BODY LAYOUT */
+    .cs-body {
+      display: grid;
+      grid-template-columns: 220px 1fr;
+      gap: 0;
+      position: relative
+    }
+
+    /* STICKY NAV */
+    .cs-sidenav {
+      position: sticky;
+      top: 80px;
+      height: fit-content;
+      padding: 48px 24px;
+      border-right: 1px solid var(--line)
+    }
+
+    .sidenav-item {
+      display: block;
+      font-family: var(--font-display);
+      font-size: .48rem;
+      font-weight: 500;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+      color: var(--ink-4);
+      padding: 10px 12px;
+      border-left: 2px solid transparent;
+      transition: all .25s ease;
+      cursor: pointer;
+      margin-bottom: 2px
+    }
+
+    .sidenav-item:hover,
+    .sidenav-item.active {
+      color: var(--accent);
+      border-left-color: var(--accent);
+      background: var(--accent-tint)
+    }
+
+    /* CONTENT */
+    .cs-content {
+      padding: 60px 64px 100px
+    }
+
+    .cs-section {
+      margin-bottom: 80px;
+      scroll-margin-top: 100px
+    }
+
+    .cs-section:last-child {
+      margin-bottom: 0
+    }
+
+    .cs-section-label {
+      font-family: var(--font-display);
+      font-size: .45rem;
+      font-weight: 700;
+      letter-spacing: .25em;
+      text-transform: uppercase;
+      color: var(--accent);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 16px
+    }
+
+    .cs-section-label::before {
+      content: '';
+      width: 16px;
+      height: 1px;
+      background: var(--accent)
+    }
+
+    .cs-section-title {
+      font-family: var(--font-display);
+      font-size: 1.75rem;
+      font-weight: 700;
+      letter-spacing: -.02em;
+      color: var(--ink);
+      margin-bottom: 24px;
+      line-height: 1.15
+    }
+
+    .cs-text {
+      font-family: var(--font-display);
+      font-size: .85rem;
+      font-weight: 300;
+      color: var(--ink-2);
+      line-height: 1.85;
+      margin-bottom: 16px
+    }
+
+    .cs-text strong {
+      color: var(--ink);
+      font-weight: 600
+    }
+
+    .cs-text em {
+      color: var(--ink-2);
+      font-style: italic
+    }
+
+    .cs-highlight {
+      background: var(--accent-tint);
+      border-left: 2px solid var(--accent);
+      padding: 20px 24px;
+      margin: 24px 0;
+      font-family: var(--font-display);
+      font-size: .85rem;
+      font-weight: 400;
+      color: var(--ink-2);
+      line-height: 1.75;
+      font-style: italic
+    }
+
+    .cs-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin: 20px 0
+    }
+
+    .cs-list li {
+      font-family: var(--font-display);
+      font-size: .82rem;
+      font-weight: 400;
+      color: var(--ink-2);
+      line-height: 1.65;
+      padding-left: 20px;
+      position: relative
+    }
+
+    .cs-list li::before {
+      content: '—';
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+      font-weight: 600
+    }
+
+    .cs-list li strong {
+      color: var(--ink);
+      font-weight: 600
+    }
+
+    .cs-step {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      padding: 28px 32px;
+      margin: 12px 0;
+      position: relative;
+      border-left: 3px solid var(--accent)
+    }
+
+    .cs-step-num {
+      font-family: var(--font-display);
+      font-size: .42rem;
+      font-weight: 700;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 8px
+    }
+
+    .cs-step-title {
+      font-family: var(--font-display);
+      font-size: .875rem;
+      font-weight: 700;
+      color: var(--ink);
+      margin-bottom: 10px
+    }
+
+    .cs-step-text {
+      font-family: var(--font-display);
+      font-size: .78rem;
+      font-weight: 300;
+      color: var(--ink-3);
+      line-height: 1.7
+    }
+
+    /* IMPACT BLOCK */
+    .impact-block {
+      background: var(--bg-2);
+      border: 1px solid var(--line);
+      padding: 48px;
+      margin: 32px 0
+    }
+
+    .impact-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+      margin-bottom: 32px
+    }
+
+    .impact-stat {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      padding: 28px;
+      text-align: center
+    }
+
+    .impact-n {
+      font-family: var(--font-display);
+      font-size: 2.25rem;
+      font-weight: 800;
+      color: var(--accent);
+      letter-spacing: -.03em;
+      line-height: 1;
+      margin-bottom: 8px
+    }
+
+    .impact-l {
+      font-family: var(--font-display);
+      font-size: .48rem;
+      font-weight: 500;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+      color: var(--ink-4);
+      line-height: 1.5
+    }
+
+    .impact-points {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 8px
+    }
+
+    .impact-points li {
+      font-family: var(--font-display);
+      font-size: .8rem;
+      font-weight: 400;
+      color: var(--ink-2);
+      line-height: 1.6;
+      display: flex;
+      gap: 10px;
+      align-items: flex-start
+    }
+
+    .impact-points li::before {
+      content: '✓';
+      color: var(--accent);
+      font-weight: 700;
+      flex-shrink: 0;
+      margin-top: 1px
+    }
+
+    /* LEARNINGS */
+    .learning-block {
+      padding: 32px 0;
+      border-bottom: 1px solid var(--line)
+    }
+
+    .learning-block:first-child {
+      padding-top: 0
+    }
+
+    .learning-block:last-child {
+      border-bottom: none
+    }
+
+    .learning-num {
+      font-family: var(--font-display);
+      font-size: .42rem;
+      font-weight: 700;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 8px
+    }
+
+    .learning-title {
+      font-family: var(--font-display);
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--ink);
+      margin-bottom: 10px;
+      line-height: 1.25;
+      letter-spacing: -.01em
+    }
+
+    .learning-text {
+      font-family: var(--font-display);
+      font-size: .8rem;
+      font-weight: 300;
+      color: var(--ink-3);
+      line-height: 1.75
+    }
+
+    /* NEXT CASE */
+    .next-case {
+      background: var(--bg-2);
+      border-top: 1px solid var(--line);
+      padding: 60px 48px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+      transition: all .35s ease;
+      text-decoration: none
+    }
+
+    .next-case:hover {
+      background: var(--bg-3)
+    }
+
+    .next-label {
+      font-family: var(--font-display);
+      font-size: .45rem;
+      font-weight: 700;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      color: var(--ink-4);
+      margin-bottom: 8px
+    }
+
+    .next-title {
+      font-family: var(--font-display);
+      font-size: 2rem;
+      font-weight: 800;
+      letter-spacing: -.02em;
+      color: var(--ink);
+      transition: color .25s ease
+    }
+
+    .next-case:hover .next-title {
+      color: var(--accent)
+    }
+
+    .next-arrow {
+      font-family: var(--font-display);
+      font-size: 3rem;
+      color: var(--ink-4);
+      transition: all .3s ease
+    }
+
+    .next-case:hover .next-arrow {
+      color: var(--accent);
+      transform: translateX(12px)
+    }
+
+    footer {
+      background: var(--bg-2);
+      padding: 48px;
+      border-top: 1px solid var(--line);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px
+    }
+
+    .footer-left {
+      font-family: var(--font-display);
+      font-size: .5rem;
+      font-weight: 500;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+      color: var(--ink-4)
+    }
+
+    .footer-oppy {
+      font-family: var(--font-display);
+      font-size: .7rem;
+      font-weight: 300;
+      font-style: italic;
+      color: var(--ink-4)
+    }
+
+    .footer-right {
+      display: flex;
+      gap: 24px
+    }
+
+    .footer-right a {
+      font-family: var(--font-display);
+      font-size: .5rem;
+      font-weight: 600;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+      color: var(--ink-4);
+      transition: color .2s ease
+    }
+
+    .footer-right a:hover {
+      color: var(--accent)
+    }
+
+    @media(max-width:1024px) {
+      nav {
+        padding: 16px 24px
+      }
+
+      .cs-hero {
+        padding: 120px 24px 0
+      }
+
+      .cs-meta {
+        flex-wrap: wrap
+      }
+
+      .cs-meta-item {
+        min-width: 50%;
+        border-bottom: 1px solid var(--line)
+      }
+
+      .cs-body {
+        grid-template-columns: 1fr
+      }
+
+      .cs-sidenav {
+        display: none
+      }
+
+      .cs-content {
+        padding: 40px 24px 80px
+      }
+
+      .impact-grid {
+        grid-template-columns: 1fr 1fr
+      }
+
+      .next-case {
+        padding: 40px 24px
+      }
+
+      footer {
+        flex-direction: column;
+        text-align: center;
+        padding: 32px 24px
+      }
+    }
+
+    @media(max-width:640px) {
+      .nav-links {
+        display: none
+      }
+
+      .cs-title {
+        font-size: clamp(2rem, 10vw, 4rem)
+      }
+
+      .impact-grid {
+        grid-template-columns: 1fr
+      }
+    }
+  </style>
 </head>
+
 <body>
-<nav id="navbar">
-  <a href="index.html" class="nav-logo">J<span>.</span>Raj</a>
-  <ul class="nav-links">
-    <li><a href="index.html#work">Work</a></li>
-    <li><a href="about.html">About</a></li>
-    <li><a href="index.html#experience">Experience</a></li>
-    <li><a href="leadership.html">Leadership</a></li>
-    <li><a href="contact.html">Contact</a></li>
-  </ul>
-  <button class="theme-toggle" id="themeToggle">☾</button>
-</nav>
+  <nav id="navbar">
+    <a href="index.html" class="nav-logo">JR<span>.</span></a>
+    <ul class="nav-links">
+      <li><a href="index.html#work">Work</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="index.html#experience">Experience</a></li>
+      <li><a href="leadership.html">Leadership</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <button class="theme-toggle" id="themeToggle">☾</button>
+  </nav>
 
-<!-- HERO -->
-<div class="cs-hero">
-  <div class="cs-hero-bg">KBZ</div>
-  <a href="index.html#work" class="back-link reveal">← All work</a>
-  <div class="cs-label reveal">Mission 01</div>
-  <h1 class="cs-title reveal reveal-delay-1">KBZ Bank<br>Core Banking<br>Redesign</h1>
-  <p class="cs-hook reveal reveal-delay-2">"Designing core banking for 10 million users — without ever meeting one."</p>
-  <div class="cs-meta reveal reveal-delay-3">
-    <div class="cs-meta-item"><div class="cs-meta-label">Role</div><div class="cs-meta-value">Lead Product Designer</div></div>
-    <div class="cs-meta-item"><div class="cs-meta-label">Company</div><div class="cs-meta-value">CodeStax.Ai</div></div>
-    <div class="cs-meta-item"><div class="cs-meta-label">Timeline</div><div class="cs-meta-value">2021 – Present</div></div>
-    <div class="cs-meta-item"><div class="cs-meta-label">Domain</div><div class="cs-meta-value">Banking / Fintech</div></div>
-    <div class="cs-meta-item"><div class="cs-meta-label">Scale</div><div class="cs-meta-value">3000+ screens · 10M+ users</div></div>
+  <!-- HERO -->
+  <div class="cs-hero">
+    <div class="cs-hero-bg">KBZ</div>
+    <a href="index.html#work" class="back-link reveal">← All work</a>
+    <div class="cs-label reveal">Mission 01</div>
+    <h1 class="cs-title reveal reveal-delay-1">KBZ Bank<br>Core Banking<br>Redesign</h1>
+    <p class="cs-hook reveal reveal-delay-2">"Designing core banking for 10 million users — without ever meeting one."
+    </p>
+    <div class="cs-meta reveal reveal-delay-3">
+      <div class="cs-meta-item">
+        <div class="cs-meta-label">Role</div>
+        <div class="cs-meta-value">Lead Product Designer</div>
+      </div>
+      <div class="cs-meta-item">
+        <div class="cs-meta-label">Company</div>
+        <div class="cs-meta-value">CodeStax.Ai</div>
+      </div>
+      <div class="cs-meta-item">
+        <div class="cs-meta-label">Timeline</div>
+        <div class="cs-meta-value">2021 – Present</div>
+      </div>
+      <div class="cs-meta-item">
+        <div class="cs-meta-label">Domain</div>
+        <div class="cs-meta-value">Banking / Fintech</div>
+      </div>
+      <div class="cs-meta-item">
+        <div class="cs-meta-label">Scale</div>
+        <div class="cs-meta-value">3000+ screens · 10M+ users</div>
+      </div>
+    </div>
   </div>
-</div>
 
-<!-- BODY -->
-<div class="cs-body">
-  <div class="cs-sidenav">
-    <a class="sidenav-item active" href="#context">Context</a>
-    <a class="sidenav-item" href="#problem">Problem</a>
-    <a class="sidenav-item" href="#constraints">Constraints</a>
-    <a class="sidenav-item" href="#approach">Approach</a>
-    <a class="sidenav-item" href="#process">Process</a>
-    <a class="sidenav-item" href="#impact">Impact</a>
-    <a class="sidenav-item" href="#learnings">Learnings</a>
-  </div>
-
-  <div class="cs-content">
-
-    <div class="cs-section reveal" id="context">
-      <div class="cs-section-label">Context</div>
-      <h2 class="cs-section-title">Myanmar's largest bank. From scratch.</h2>
-      <p class="cs-text">KBZ Bank is one of the largest banks in Myanmar, with over <strong>10 million active users</strong> on their digital platform. CodeStax partnered with a core banking technology company to rebuild their entire system — web app, responsive web, and native mobile — from the ground up.</p>
-      <p class="cs-text">I led the design. Alone, initially — before we built the team around it.</p>
+  <!-- BODY -->
+  <div class="cs-body">
+    <div class="cs-sidenav">
+      <a class="sidenav-item active" href="#context">Context</a>
+      <a class="sidenav-item" href="#problem">Problem</a>
+      <a class="sidenav-item" href="#constraints">Constraints</a>
+      <a class="sidenav-item" href="#approach">Approach</a>
+      <a class="sidenav-item" href="#process">Process</a>
+      <a class="sidenav-item" href="#impact">Impact</a>
+      <a class="sidenav-item" href="#learnings">Learnings</a>
     </div>
 
-    <div class="cs-section reveal" id="problem">
-      <div class="cs-section-label">The Problem</div>
-      <h2 class="cs-section-title">Functional but broken at scale.</h2>
-      <p class="cs-text">The existing KBZ experience was functional but heavy. Users were buried under steps, menus, and legacy patterns from a decade of incremental additions. A simple money transfer took <strong>6 screens</strong>. Key actions were hidden behind nested menus. The system worked — but it wasn't fast, and it wasn't scaling.</p>
-      <div class="cs-highlight">"The business brief was clear: modernize the entire platform, reduce friction, and build a system that can grow."</div>
-    </div>
+    <div class="cs-content">
 
-    <div class="cs-section reveal" id="constraints">
-      <div class="cs-section-label">The Constraints</div>
-      <h2 class="cs-section-title">This is the wild part.</h2>
-      <p class="cs-text">Myanmar went through a major political crisis during the project. Internet connectivity was unstable, parts of the country were under unrest, and <strong>direct access to users was impossible</strong>. No interviews. No usability tests. No field research. For a project of this scale, that's a nightmare.</p>
-      <ul class="cs-list">
-        <li><strong>Dual-language system</strong> — English + Burmese, with very different reading patterns and UI conventions</li>
-        <li><strong>Cultural UX expectations</strong> — closer to Chinese/Singaporean banking UX — users wanted everything visible, not hidden behind progressive disclosure</li>
-        <li><strong>Architectural constraints</strong> — designing within a partner's core banking architecture with non-negotiable data structures</li>
-        <li><strong>Zero user access</strong> — no direct research possible due to political instability and connectivity issues</li>
-      </ul>
-    </div>
-
-    <div class="cs-section reveal" id="approach">
-      <div class="cs-section-label">My Approach</div>
-      <h2 class="cs-section-title">When you can't talk to users, you get creative.</h2>
-
-      <div class="cs-step">
-        <div class="cs-step-num">Approach 01</div>
-        <div class="cs-step-title">Competitor benchmarking as research substitute</div>
-        <div class="cs-step-text">I studied 20+ banking apps across Asia — ICICI, HDFC, AYA Bank, UOB, DBS, and KBZ's existing Pay app. Mapped common patterns, flagged cultural UX differences, and built a reference library of what "good" looks like in this region.</div>
+      <div class="cs-section reveal" id="context">
+        <div class="cs-section-label">Context</div>
+        <h2 class="cs-section-title">Myanmar's largest bank. From scratch.</h2>
+        <p class="cs-text">KBZ Bank is one of the largest banks in Myanmar, with over <strong>10 million active
+            users</strong> on their digital platform. CodeStax partnered with a core banking technology company to
+          rebuild their entire system — web app, responsive web, and native mobile — from the ground up.</p>
+        <p class="cs-text">I led the design. Alone, initially — before we built the team around it.</p>
       </div>
 
-      <div class="cs-step">
-        <div class="cs-step-num">Approach 02</div>
-        <div class="cs-step-title">Data from secondary sources</div>
-        <div class="cs-step-text">Play Store reviews, forum complaints, product feedback logs from KBZ's existing app — I mined everything available to rebuild the picture of who the user is and what's breaking. Treated negative reviews as unprompted usability sessions.</div>
+      <div class="cs-section reveal" id="problem">
+        <div class="cs-section-label">The Problem</div>
+        <h2 class="cs-section-title">Functional but broken at scale.</h2>
+        <p class="cs-text">The existing KBZ experience was functional but heavy. Users were buried under steps, menus,
+          and legacy patterns from a decade of incremental additions. A simple money transfer took <strong>6
+            screens</strong>. Key actions were hidden behind nested menus. The system worked — but it wasn't fast, and
+          it wasn't scaling.</p>
+        <div class="cs-highlight">"The business brief was clear: modernize the entire platform, reduce friction, and
+          build a system that can grow."</div>
       </div>
 
-      <div class="cs-step">
-        <div class="cs-step-num">Approach 03</div>
-        <div class="cs-step-title">Stakeholders as proxy research</div>
-        <div class="cs-step-text">PMs, partner architects, and KBZ liaisons became my proxy research channel. I ran structured alignment sessions to extract real usage patterns, edge cases, and regulatory constraints. Every decision needed to be justified with something beyond my own assumption.</div>
-      </div>
-    </div>
-
-    <div class="cs-section reveal" id="process">
-      <div class="cs-section-label">The Process</div>
-      <h2 class="cs-section-title">Architecture before aesthetics.</h2>
-
-      <p class="cs-text"><strong>Information architecture first.</strong> Before touching visuals, I restructured the entire app hierarchy. Flattened nested menus. Surfaced high-frequency actions. Built a navigation model that matched regional mental models — visible primary actions, bottom bar always accessible.</p>
-
-      <div class="cs-highlight">The payment flow rewrite — the most critical change. 6 steps became 3:</div>
-      <ul class="cs-list">
-        <li>Select beneficiary — with smart recency + favorites surfaced first</li>
-        <li>Enter amount + note</li>
-        <li>Confirm & pay</li>
-      </ul>
-      <p class="cs-text">Scheduling, recurring transfers, and bill pay were folded into the same flow instead of being separate journeys.</p>
-
-      <p class="cs-text"><strong>System-level thinking.</strong> I designed a shared component library that could scale across 3000+ screens without breaking. Master components, overrides, and styles were structured for reuse — the foundation of what would later become a proper design system. Both English and Burmese versions shared the same components with language-specific spacing rules.</p>
-
-      <p class="cs-text"><strong>Cultural calibration.</strong> Reduced hover states (Asian mobile-first users don't hover). Moved primary actions to bottom sheets. Increased tap targets significantly. Kept visual density higher than Western standards because users expected it — empty space reads as "missing content."</p>
-    </div>
-
-    <div class="cs-section reveal" id="impact">
-      <div class="cs-section-label">Impact</div>
-      <h2 class="cs-section-title">What shipped. What changed.</h2>
-      <div class="impact-block">
-        <div class="impact-grid">
-          <div class="impact-stat"><div class="impact-n">3000+</div><div class="impact-l">Screens designed across<br>web, mobile, responsive</div></div>
-          <div class="impact-stat"><div class="impact-n">50%</div><div class="impact-l">Reduction in critical<br>payment flow steps</div></div>
-          <div class="impact-stat"><div class="impact-n">10M+</div><div class="impact-l">Active users rolling<br>out to</div></div>
-        </div>
-        <ul class="impact-points">
-          <li><strong>Full dual-language system</strong> delivered in English and Burmese with shared component library</li>
-          <li><strong>Payment flow reduced from 6 steps → 3</strong> (50% reduction in critical user path)</li>
-          <li><strong>Reusable component library</strong> that scaled across the entire product suite — became the foundation for future CodeStax design systems</li>
-          <li><strong>Cultural UX framework</strong> established for Asian banking products — now referenced for all Myanmar-facing work</li>
-          <li>Currently in final development phase — rolling out to 10M+ active users</li>
+      <div class="cs-section reveal" id="constraints">
+        <div class="cs-section-label">The Constraints</div>
+        <h2 class="cs-section-title">This is the wild part.</h2>
+        <p class="cs-text">Myanmar went through a major political crisis during the project. Internet connectivity was
+          unstable, parts of the country were under unrest, and <strong>direct access to users was impossible</strong>.
+          No interviews. No usability tests. No field research. For a project of this scale, that's a nightmare.</p>
+        <ul class="cs-list">
+          <li><strong>Dual-language system</strong> — English + Burmese, with very different reading patterns and UI
+            conventions</li>
+          <li><strong>Cultural UX expectations</strong> — closer to Chinese/Singaporean banking UX — users wanted
+            everything visible, not hidden behind progressive disclosure</li>
+          <li><strong>Architectural constraints</strong> — designing within a partner's core banking architecture with
+            non-negotiable data structures</li>
+          <li><strong>Zero user access</strong> — no direct research possible due to political instability and
+            connectivity issues</li>
         </ul>
       </div>
+
+      <div class="cs-section reveal" id="approach">
+        <div class="cs-section-label">My Approach</div>
+        <h2 class="cs-section-title">When you can't talk to users, you get creative.</h2>
+
+        <div class="cs-step">
+          <div class="cs-step-num">Approach 01</div>
+          <div class="cs-step-title">Competitor benchmarking as research substitute</div>
+          <div class="cs-step-text">I studied 20+ banking apps across Asia — ICICI, HDFC, AYA Bank, UOB, DBS, and KBZ's
+            existing Pay app. Mapped common patterns, flagged cultural UX differences, and built a reference library of
+            what "good" looks like in this region.</div>
+        </div>
+
+        <div class="cs-step">
+          <div class="cs-step-num">Approach 02</div>
+          <div class="cs-step-title">Data from secondary sources</div>
+          <div class="cs-step-text">Play Store reviews, forum complaints, product feedback logs from KBZ's existing app
+            — I mined everything available to rebuild the picture of who the user is and what's breaking. Treated
+            negative reviews as unprompted usability sessions.</div>
+        </div>
+
+        <div class="cs-step">
+          <div class="cs-step-num">Approach 03</div>
+          <div class="cs-step-title">Stakeholders as proxy research</div>
+          <div class="cs-step-text">PMs, partner architects, and KBZ liaisons became my proxy research channel. I ran
+            structured alignment sessions to extract real usage patterns, edge cases, and regulatory constraints. Every
+            decision needed to be justified with something beyond my own assumption.</div>
+        </div>
+      </div>
+
+      <div class="cs-section reveal" id="process">
+        <div class="cs-section-label">The Process</div>
+        <h2 class="cs-section-title">Architecture before aesthetics.</h2>
+
+        <p class="cs-text"><strong>Information architecture first.</strong> Before touching visuals, I restructured the
+          entire app hierarchy. Flattened nested menus. Surfaced high-frequency actions. Built a navigation model that
+          matched regional mental models — visible primary actions, bottom bar always accessible.</p>
+
+        <div class="cs-highlight">The payment flow rewrite — the most critical change. 6 steps became 3:</div>
+        <ul class="cs-list">
+          <li>Select beneficiary — with smart recency + favorites surfaced first</li>
+          <li>Enter amount + note</li>
+          <li>Confirm & pay</li>
+        </ul>
+        <p class="cs-text">Scheduling, recurring transfers, and bill pay were folded into the same flow instead of being
+          separate journeys.</p>
+
+        <p class="cs-text"><strong>System-level thinking.</strong> I designed a shared component library that could
+          scale across 3000+ screens without breaking. Master components, overrides, and styles were structured for
+          reuse — the foundation of what would later become a proper design system. Both English and Burmese versions
+          shared the same components with language-specific spacing rules.</p>
+
+        <p class="cs-text"><strong>Cultural calibration.</strong> Reduced hover states (Asian mobile-first users don't
+          hover). Moved primary actions to bottom sheets. Increased tap targets significantly. Kept visual density
+          higher than Western standards because users expected it — empty space reads as "missing content."</p>
+      </div>
+
+      <div class="cs-section reveal" id="impact">
+        <div class="cs-section-label">Impact</div>
+        <h2 class="cs-section-title">What shipped. What changed.</h2>
+        <div class="impact-block">
+          <div class="impact-grid">
+            <div class="impact-stat">
+              <div class="impact-n">3000+</div>
+              <div class="impact-l">Screens designed across<br>web, mobile, responsive</div>
+            </div>
+            <div class="impact-stat">
+              <div class="impact-n">50%</div>
+              <div class="impact-l">Reduction in critical<br>payment flow steps</div>
+            </div>
+            <div class="impact-stat">
+              <div class="impact-n">10M+</div>
+              <div class="impact-l">Active users rolling<br>out to</div>
+            </div>
+          </div>
+          <ul class="impact-points">
+            <li><strong>Full dual-language system</strong> delivered in English and Burmese with shared component
+              library</li>
+            <li><strong>Payment flow reduced from 6 steps → 3</strong> (50% reduction in critical user path)</li>
+            <li><strong>Reusable component library</strong> that scaled across the entire product suite — became the
+              foundation for future CodeStax design systems</li>
+            <li><strong>Cultural UX framework</strong> established for Asian banking products — now referenced for all
+              Myanmar-facing work</li>
+            <li>Currently in final development phase — rolling out to 10M+ active users</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="cs-section reveal" id="learnings">
+        <div class="cs-section-label">Learnings</div>
+        <h2 class="cs-section-title">What this project changed in me.</h2>
+
+        <div class="learning-block">
+          <div class="learning-num">Learning 01</div>
+          <div class="learning-title">"Research isn't a checklist — it's a mindset."</div>
+          <div class="learning-text">When you can't run interviews, you still need to understand the user. You just have
+            to be more creative about where you find the signal. Secondary sources, competitor teardowns, proxy
+            stakeholders — all valid. Constraint produces creativity.</div>
+        </div>
+        <div class="learning-block">
+          <div class="learning-num">Learning 02</div>
+          <div class="learning-title">"Cultural UX is real — and it matters more than you think."</div>
+          <div class="learning-text">What feels "clean" in San Francisco feels "empty" in Yangon. Defaulting to Western
+            design norms on an Asian product is how you ship something nobody wants to use. Every design decision has
+            cultural assumptions baked in — the job is to find them before they become problems.</div>
+        </div>
+        <div class="learning-block">
+          <div class="learning-num">Learning 03</div>
+          <div class="learning-title">"You can't design 3000 screens one at a time."</div>
+          <div class="learning-text">You design the system, and the screens design themselves. This project made me a
+            systems thinker. The shift from "what does this screen look like" to "what system produces these screens
+            consistently" is the most important transition a designer can make.</div>
+        </div>
+      </div>
+
     </div>
+  </div>
 
-    <div class="cs-section reveal" id="learnings">
-      <div class="cs-section-label">Learnings</div>
-      <h2 class="cs-section-title">What this project changed in me.</h2>
-
-      <div class="learning-block">
-        <div class="learning-num">Learning 01</div>
-        <div class="learning-title">"Research isn't a checklist — it's a mindset."</div>
-        <div class="learning-text">When you can't run interviews, you still need to understand the user. You just have to be more creative about where you find the signal. Secondary sources, competitor teardowns, proxy stakeholders — all valid. Constraint produces creativity.</div>
-      </div>
-      <div class="learning-block">
-        <div class="learning-num">Learning 02</div>
-        <div class="learning-title">"Cultural UX is real — and it matters more than you think."</div>
-        <div class="learning-text">What feels "clean" in San Francisco feels "empty" in Yangon. Defaulting to Western design norms on an Asian product is how you ship something nobody wants to use. Every design decision has cultural assumptions baked in — the job is to find them before they become problems.</div>
-      </div>
-      <div class="learning-block">
-        <div class="learning-num">Learning 03</div>
-        <div class="learning-title">"You can't design 3000 screens one at a time."</div>
-        <div class="learning-text">You design the system, and the screens design themselves. This project made me a systems thinker. The shift from "what does this screen look like" to "what system produces these screens consistently" is the most important transition a designer can make.</div>
-      </div>
+  <!-- NEXT -->
+  <a href="case-flowstax.html" class="next-case">
+    <div>
+      <div class="next-label">Next Mission</div>
+      <div class="next-title">FlowStax — No-code Workflow Builder</div>
     </div>
+    <div class="next-arrow">→</div>
+  </a>
 
-  </div>
-</div>
+  <footer>
+    <div class="footer-left">© 2026 Jeevan Raj</div>
+    <div class="footer-oppy"><em>Dedicated to Oppy — who worked alone, far from home, and never stopped reporting
+        back.</em></div>
+    <div class="footer-right"><a href="index.html#work">All Work</a><a href="contact.html">Contact</a></div>
+  </footer>
 
-<!-- NEXT -->
-<a href="case-flowstax.html" class="next-case">
-  <div>
-    <div class="next-label">Next Mission</div>
-    <div class="next-title">FlowStax — No-code Workflow Builder</div>
-  </div>
-  <div class="next-arrow">→</div>
-</a>
-
-<footer>
-  <div class="footer-left">© 2026 Jeevan Raj</div>
-  <div class="footer-oppy"><em>Dedicated to Oppy — who worked alone, far from home, and never stopped reporting back.</em></div>
-  <div class="footer-right"><a href="index.html#work">All Work</a><a href="contact.html">Contact</a></div>
-</footer>
-
-<script>
-const html=document.documentElement,toggle=document.getElementById('themeToggle');
-let theme='dark';
-toggle.addEventListener('click',()=>{theme=theme==='dark'?'light':'dark';html.setAttribute('data-theme',theme);toggle.textContent=theme==='dark'?'☾':'☀'});
-const reveals=document.querySelectorAll('.reveal');
-const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('revealed')})},{threshold:.1,rootMargin:'0px 0px -60px 0px'});
-reveals.forEach(el=>obs.observe(el));
-document.querySelectorAll('.cs-hero .reveal').forEach((el,i)=>setTimeout(()=>el.classList.add('revealed'),200+i*150));
-// sidenav scrollspy
-const sections=document.querySelectorAll('.cs-section');
-const navItems=document.querySelectorAll('.sidenav-item');
-const sectionObs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){navItems.forEach(n=>n.classList.remove('active'));const a=document.querySelector(`.sidenav-item[href="#${e.target.id}"]`);if(a)a.classList.add('active')}})},{threshold:.4});
-sections.forEach(s=>sectionObs.observe(s));
-let last=0;const nav=document.getElementById('navbar');
-window.addEventListener('scroll',()=>{const c=window.scrollY;nav.style.transform=c>last&&c>120?'translateY(-100%)':'translateY(0)';last=c},{passive:true});
-</script>
+  <script>
+    const html = document.documentElement, toggle = document.getElementById('themeToggle');
+    let theme = localStorage.getItem('theme') || 'dark';
+    if (toggle) toggle.textContent = theme === 'dark' ? '☾' : '☀';
+    toggle.addEventListener('click', () => {
+      theme = theme === 'dark' ? 'light' : 'dark';
+      html.setAttribute('data-theme', theme);
+      localStorage.setItem('theme', theme);
+      toggle.textContent = theme === 'dark' ? '☾' : '☀';
+    });
+    const reveals = document.querySelectorAll('.reveal');
+    const obs = new IntersectionObserver(entries => { entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('revealed') }) }, { threshold: .1, rootMargin: '0px 0px -60px 0px' });
+    reveals.forEach(el => obs.observe(el));
+    document.querySelectorAll('.cs-hero .reveal').forEach((el, i) => setTimeout(() => el.classList.add('revealed'), 200 + i * 150));
+    // sidenav scrollspy
+    const sections = document.querySelectorAll('.cs-section');
+    const navItems = document.querySelectorAll('.sidenav-item');
+    const sectionObs = new IntersectionObserver(entries => { entries.forEach(e => { if (e.isIntersecting) { navItems.forEach(n => n.classList.remove('active')); const a = document.querySelector(`.sidenav-item[href="#${e.target.id}"]`); if (a) a.classList.add('active') } }) }, { threshold: .4 });
+    sections.forEach(s => sectionObs.observe(s));
+    let last = 0; const nav = document.getElementById('navbar');
+    window.addEventListener('scroll', () => { const c = window.scrollY; nav.style.transform = c > last && c > 120 ? 'translateY(-100%)' : 'translateY(0)'; last = c }, { passive: true });
+  </script>
 </body>
+
 </html>

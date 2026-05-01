@@ -1,6 +1,12 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="dark">
 <head>
+<script>
+  (function() {
+    var savedTheme = localStorage.getItem('theme') || 'dark';
+    document.documentElement.setAttribute('data-theme', savedTheme);
+  })();
+</script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Jeevan Raj — Lead Product Designer</title>
@@ -2039,11 +2045,13 @@ footer {
    ============================================================ */
 const html = document.documentElement;
 const toggle = document.getElementById('themeToggle');
-let currentTheme = 'dark';
+let currentTheme = localStorage.getItem('theme') || 'dark';
+if(toggle) toggle.textContent = currentTheme === 'dark' ? '☾' : '☀';
 
 toggle.addEventListener('click', () => {
   currentTheme = currentTheme === 'dark' ? 'light' : 'dark';
   html.setAttribute('data-theme', currentTheme);
+  localStorage.setItem('theme', currentTheme);
   toggle.textContent = currentTheme === 'dark' ? '☾' : '☀';
 });
 
